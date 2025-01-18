@@ -18,7 +18,14 @@ spring:
     console:
       enabled: true
       path: /h2-console
-
   flyway:
     enabled: true
     locations: classpath:db/migration
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "*"
