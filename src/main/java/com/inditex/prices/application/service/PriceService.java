@@ -14,16 +14,15 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class PriceService {
 
-    private final PriceRepository priceRepository;
+  private final PriceRepository priceRepository;
 
-    public Price findByProductIdBrandIdBetweenApplicationDate(Long productId,
-                                                              Long brandId,
-                                                              LocalDateTime applicationDate) {
+  public Price findByProductIdBrandIdBetweenApplicationDate(Long productId, Long brandId,
+      LocalDateTime applicationDate) {
 
-        log.debug("Retrieving product price by {}, {}, {}", productId, brandId, applicationDate);
-        return priceRepository.findByProductIdBrandIdBetweenApplicationDate(productId, brandId, applicationDate)
-                .orElseThrow(() -> new ResourceNotFoundException("Price not found for product " + productId +
-                        " and brand " + brandId + " at " + applicationDate));
-    }
+    log.debug("Retrieving product price by {}, {}, {}", productId, brandId, applicationDate);
+    return priceRepository.findByProductIdBrandIdBetweenApplicationDate(productId, brandId,
+        applicationDate).orElseThrow(() -> new ResourceNotFoundException(
+        "Price not found for product " + productId + " and brand " + brandId + " at " + applicationDate));
+  }
 
 }

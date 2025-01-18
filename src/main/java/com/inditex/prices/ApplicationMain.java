@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.inditex.prices.infrastructure.repository.jpa")
 public class ApplicationMain {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ApplicationMain.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(ApplicationMain.class, args);
+  }
 
 }

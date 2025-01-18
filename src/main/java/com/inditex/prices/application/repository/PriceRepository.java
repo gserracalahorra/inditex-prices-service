@@ -7,8 +7,7 @@ import java.util.Optional;
 
 public interface PriceRepository {
 
-    Optional<Price> findByProductIdBrandIdBetweenApplicationDate(Long productId,
-                                                                 Long brandId,
-                                                                 LocalDateTime applicationDate);
+  Optional<Price> findByProductIdBrandIdBetweenApplicationDate(Long productId, Long brandId,
+      LocalDateTime applicationDate);
 
 }

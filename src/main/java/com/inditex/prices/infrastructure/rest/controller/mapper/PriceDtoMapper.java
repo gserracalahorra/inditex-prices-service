@@ -7,6 +7,6 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface PriceDtoMapper {
 
-    PriceDto fromDomainToDto(Price priceDomain);
+  PriceDto fromDomainToDto(Price priceDomain);
 
 }

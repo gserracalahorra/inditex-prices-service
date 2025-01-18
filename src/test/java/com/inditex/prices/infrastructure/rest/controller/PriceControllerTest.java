@@ -13,44 +13,47 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class PriceControllerTest {
 
-    @InjectMocks
-    private PriceController priceController;
+  @InjectMocks
+  private PriceController priceController;
 
-    @Mock
-    private PriceService priceService;
+  @Mock
+  private PriceService priceService;
 
-    @Mock
-    private PriceDtoMapper priceDtoMapper;
+  @Mock
+  private PriceDtoMapper priceDtoMapper;
 
-    @Test
-    public void test200Response() {
+  @Test
+  public void test200Response() {
 
-        var price = Price.builder().build();
+    var price = Price.builder().build();
 
-        when(priceService.findByProductIdBrandIdBetweenApplicationDate(any(), any(), any())).thenReturn(price);
+    when(priceService.findByProductIdBrandIdBetweenApplicationDate(any(), any(), any())).thenReturn(
+        price);
 
-        when(priceDtoMapper.fromDomainToDto(any())).thenReturn(new PriceDto());
+    when(priceDtoMapper.fromDomainToDto(any())).thenReturn(new PriceDto());
 
-        var response = priceController.pricesGet(LocalDate.now().atStartOfDay(), 1l, 1l);
+    var response = priceController.pricesGet(LocalDate.now().atStartOfDay(), 1l, 1l);
 
-        assertEquals(200, response.getStatusCode().value());
-    }
+    assertEquals(200, response.getStatusCode().value());
+  }
 
-    @Test
-    public void test404Response() {
+  @Test
+  public void test404Response() {
 
-        when(priceService.findByProductIdBrandIdBetweenApplicationDate(any(), any(), any()))
-                .thenThrow(new ResourceNotFoundException("Resource not found"));
+    when(priceService.findByProductIdBrandIdBetweenApplicationDate(any(), any(), any())).thenThrow(
+        new ResourceNotFoundException("Resource not found"));
 
-        assertThrows(ResourceNotFoundException.class, () -> {
-            priceController.pricesGet(LocalDate.now().atStartOfDay(), 1l, 1l);
-        });
-    }
+    assertThrows(ResourceNotFoundException.class, () -> {
+      priceController.pricesGet(LocalDate.now().atStartOfDay(), 1l, 1l);
+    });
+  }
 
 }

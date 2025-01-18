@@ -19,26 +19,25 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class PriceServiceTest {
 
-    @InjectMocks
-    private PriceService priceService;
+  @InjectMocks
+  private PriceService priceService;
 
-    @Mock
-    private PriceRepository priceRepository;
+  @Mock
+  private PriceRepository priceRepository;
 
-    @Test
-    public void testWhenTwoPricesThePrioritiIsRespected() {
+  @Test
+  public void testWhenTwoPricesThePrioritiIsRespected() {
 
-        var price = Price.builder()
-                .price(BigDecimal.valueOf(10.5f))
-                .build();
+    var price = Price.builder().price(BigDecimal.valueOf(10.5f)).build();
 
-        when(priceRepository
-                .findByProductIdBrandIdBetweenApplicationDate(eq(Long.valueOf(1l)), eq(Long.valueOf(1l)), eq(LocalDate.of(2020, 1, 1).atStartOfDay())))
-                .thenReturn(Optional.of(price));
+    when(priceRepository.findByProductIdBrandIdBetweenApplicationDate(eq(Long.valueOf(1l)),
+        eq(Long.valueOf(1l)), eq(LocalDate.of(2020, 1, 1).atStartOfDay()))).thenReturn(
+        Optional.of(price));
 
-        var result = priceService.findByProductIdBrandIdBetweenApplicationDate(1l, 1l, LocalDate.of(2020, 1, 1).atStartOfDay());
+    var result = priceService.findByProductIdBrandIdBetweenApplicationDate(1l, 1l,
+        LocalDate.of(2020, 1, 1).atStartOfDay());
 
-        assertEquals(result.getPrice(), BigDecimal.valueOf(10.5f));
-    }
+    assertEquals(result.getPrice(), BigDecimal.valueOf(10.5f));
+  }
 
 }

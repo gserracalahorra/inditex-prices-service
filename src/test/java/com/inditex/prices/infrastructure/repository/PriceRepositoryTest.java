@@ -21,43 +21,43 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class PriceRepositoryTest {
 
-    @InjectMocks
-    private PriceRepositoryImpl priceRepository;
+  @InjectMocks
+  private PriceRepositoryImpl priceRepository;
 
-    @Mock
-    private PriceJpaRepository priceJpaRepository;
+  @Mock
+  private PriceJpaRepository priceJpaRepository;
 
-    @Mock
-    private PriceEntityMapper priceEntityMapper;
+  @Mock
+  private PriceEntityMapper priceEntityMapper;
 
-    @Test
-    public void testFindByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDateSuccess() {
+  @Test
+  public void testFindByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDateSuccess() {
 
-        var priceEntity = PriceEntity.builder().build();
+    var priceEntity = PriceEntity.builder().build();
 
-        when(priceJpaRepository
-                .findByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDate(any(), any(), any()))
-                .thenReturn(Optional.of(priceEntity));
+    when(
+        priceJpaRepository.findByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDate(any(),
+            any(), any())).thenReturn(Optional.of(priceEntity));
 
-        when(priceEntityMapper.fromEntityToDomain(any())).thenReturn(Price.builder().build());
+    when(priceEntityMapper.fromEntityToDomain(any())).thenReturn(Price.builder().build());
 
-        var result = priceRepository
-                .findByProductIdBrandIdBetweenApplicationDate(1l, 1l, LocalDate.now().atStartOfDay());
+    var result = priceRepository.findByProductIdBrandIdBetweenApplicationDate(1l, 1l,
+        LocalDate.now().atStartOfDay());
 
-        assertTrue(result.isPresent());
-    }
+    assertTrue(result.isPresent());
+  }
 
-    @Test
-    public void testFindByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDateNoRegistry() {
+  @Test
+  public void testFindByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDateNoRegistry() {
 
-        when(priceJpaRepository
-                .findByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDate(any(), any(), any()))
-                .thenReturn(Optional.empty());
+    when(
+        priceJpaRepository.findByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDate(any(),
+            any(), any())).thenReturn(Optional.empty());
 
-        var result = priceRepository
-                .findByProductIdBrandIdBetweenApplicationDate(1l, 1l, LocalDate.now().atStartOfDay());
+    var result = priceRepository.findByProductIdBrandIdBetweenApplicationDate(1l, 1l,
+        LocalDate.now().atStartOfDay());
 
-        assertFalse(result.isPresent());
-    }
+    assertFalse(result.isPresent());
+  }
 
 }

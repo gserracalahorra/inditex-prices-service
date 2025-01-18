@@ -86,10 +86,10 @@ components:
           format: date
 
     ErrorMessage:
-        type: object
-        properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

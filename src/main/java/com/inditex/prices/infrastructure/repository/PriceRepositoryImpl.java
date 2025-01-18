@@ -14,17 +14,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PriceRepositoryImpl implements PriceRepository {
 
-    private final PriceEntityMapper mapper;
+  private final PriceEntityMapper mapper;
 
-    private final PriceJpaRepository priceJpaRepository;
+  private final PriceJpaRepository priceJpaRepository;
 
-    @Override
-    public Optional<Price> findByProductIdBrandIdBetweenApplicationDate(Long productId,
-                                                                        Long brandId,
-                                                                        LocalDateTime applicationDate) {
-        return priceJpaRepository
-                .findByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDate(productId, brandId,
-                        applicationDate).map(mapper::fromEntityToDomain);
-    }
+  @Override
+  public Optional<Price> findByProductIdBrandIdBetweenApplicationDate(Long productId, Long brandId,
+      LocalDateTime applicationDate) {
+    return priceJpaRepository.findByProductIdBrandIdAndApplicationDateBetweenStartDateAndEndDate(
+        productId, brandId, applicationDate).map(mapper::fromEntityToDomain);
+  }
 
 }

@@ -14,20 +14,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Price {
 
-    private Integer brandId;
+  private Integer brandId;
 
-    private LocalDateTime startDate;
+  private LocalDateTime startDate;
 
-    private LocalDateTime endDate;
+  private LocalDateTime endDate;
 
-    private Integer priceList;
+  private Integer priceList;
 
-    private Integer productId;
+  private Integer productId;
 
-    private Integer priority;
+  private Integer priority;
 
-    private BigDecimal price;
+  private BigDecimal price;
 
-    private String currency;
+  private String currency;
 
 }
