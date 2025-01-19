@@ -5,6 +5,7 @@ import com.inditex.prices.infrastructure.rest.controller.mapper.PriceDtoMapper;
 import com.inditex.prices.infrastructure.rest.dto.PriceDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,7 @@ public class PriceController implements PricesApi {
   private final PriceDtoMapper mapper;
 
   @Override
+  @Cacheable("pricesCache")
   public ResponseEntity<PriceDto> pricesGet(LocalDateTime applicationDate, Long productId,
       Long brandId) {
     var pricesDomain = priceService.findByProductIdBrandIdBetweenApplicationDate(productId, brandId,
