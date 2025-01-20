@@ -1,0 +1,196 @@
+{
+  "info": {
+    "name": "Inditex Price Application",
+    "_postman_id": "unique-id",
+    "description": "Collection of API calls for Inditex Price Application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8090/prices-service"
+    }
+  ],
+  "item": [
+    {
+      "name": "testRequestAt10n14DayForProductId35455AndBrandId1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/prices?brandId=1&productId=35455&applicationDate=2020-06-14T10:00:00.000Z",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "brandId",
+              "value": "1"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T10:00:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "testRequestAt16n14DayForProductId35455AndBrandId1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/prices?brandId=1&productId=35455&applicationDate=2020-06-14T16:00:00.000Z",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "brandId",
+              "value": "1"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T16:00:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "testRequestAt21n14DayForProductId35455AndBrandId1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/prices?brandId=1&productId=35455&applicationDate=2020-06-14T21:00:00.000Z",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "brandId",
+              "value": "1"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T21:00:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "testRequestAt10n15DayForProductId35455AndBrandId1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/prices?brandId=1&productId=35455&applicationDate=2020-06-15T10:00:00.000Z",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "brandId",
+              "value": "1"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "applicationDate",
+              "value": "2020-06-15T10:00:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "testRequestAt21n16DayForProductId35455AndBrandId1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/prices?brandId=1&productId=35455&applicationDate=2020-06-16T21:00:00.000Z",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "brandId",
+              "value": "1"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "applicationDate",
+              "value": "2020-06-16T21:00:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "testRequestWhenProductIdNotExistsThenReturn404",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/prices?brandId=1&productId=11111&applicationDate=2020-06-16T21:00:00.000Z",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "brandId",
+              "value": "1"
+            },
+            {
+              "key": "productId",
+              "value": "11111"
+            },
+            {
+              "key": "applicationDate",
+              "value": "2020-06-16T21:00:00.000Z"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: Prices API
+  description: The prices api.
+  version: 0.1.9
+paths:
+  /prices:
+    get:
+      summary: Returns a lists of prices by filters.
+      description: A list of prices filtered by params.
+      parameters:
+        - name: applicationDate
+          in: query
+          required: true
+          description: The application date.
+          schema:
+            type: string
+            format: date-time
+        - name: productId
+          in: query
+          required: true
+          description: The ID of the referenced product.
+          schema:
+            type: integer
+            format: int64
+        - name: brandId
+          in: query
+          required: true
+          description: The ID of the referenced brand.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: A JSON array of prices
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Price'
+        '400':
+          description: Bad request params.
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorMessage'
+        '404':
+          description: A user with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorMessage'
+        '500':
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorMessage'
+        default:
+          description: Unexpected error
+
+components:
+
+  schemas:
+    Price:
+      type: object
+      properties:
+        productId:
+          type: integer
+          format: int64
+        brandId:
+          type: integer
+          format: int64
+        currency:
+          type: string
+        price:
+          type: number
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date
+
+    ErrorMessage:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

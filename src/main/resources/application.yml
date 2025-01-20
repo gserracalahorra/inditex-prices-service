@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: inditex-prices-service
+
+server:
+  servlet:
+    context-path: /prices-service
